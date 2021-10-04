@@ -1,0 +1,19 @@
+from django.db import models
+
+
+class Tier(models.Model):
+    name = models.CharField(max_length=30)
+    link_flag = models.BooleanField(default=False, verbose_name='Link for original image')
+    expired_link_flag = models.BooleanField(default=False, verbose_name='Expired links',
+                                            help_text='Can user create expired links?')
+    size = models.ManyToManyField('Size', related_name='sizes')
+
+    def __str__(self):
+        return self.name
+
+
+class Size(models.Model):
+    height = models.PositiveIntegerField(default=200, verbose_name="Height in px")
+
+    def __str__(self):
+        return f'{self.height} px'
