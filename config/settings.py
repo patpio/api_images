@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('Debug', default=0))
+DEBUG = int(os.environ.get('DEBUG', default=0))
 
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split()
 INTERNAL_IPS = ALLOWED_HOSTS
@@ -43,8 +43,10 @@ INSTALLED_APPS = [
 
     # Third-party
     'rest_framework',
+    'magic',
 
     # Local
+    'images.apps.ImagesConfig',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +147,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+IMAGE_TYPES = ['jpeg', 'png']
